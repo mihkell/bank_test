@@ -12,9 +12,9 @@ src/main/resources/create_database.sql
 src/main/resources/tables_data.sql
 ```
 
-###3. import Gradle project to IDE and get dependencies
+###3. Import Gradle project to IDE and get dependencies
 
-###4. To Run this project locally
+###4. To run project
 ```
 gradle jettyRun
 ```
