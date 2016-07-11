@@ -1,0 +1,5 @@
+CREATE DATABASE pocopay;
+CREATE ROLE pocopay WITH LOGIN;
+ALTER DATABASE pocopay OWNER TO pocopay;
+
+-- DROP DATABASE pocopay;
