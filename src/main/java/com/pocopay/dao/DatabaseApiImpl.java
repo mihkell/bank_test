@@ -15,7 +15,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
-import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.pocopay.service.AccountService;
 import com.pocopay.services.dto.AccountDto;
