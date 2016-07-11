@@ -1,4 +1,4 @@
-Gradle - Small Banking app
+Small Banking app
 ===============================
 
 
