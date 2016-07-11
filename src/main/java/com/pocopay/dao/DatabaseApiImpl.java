@@ -22,7 +22,7 @@ import com.pocopay.services.dto.AccountDto;
 import com.pocopay.services.dto.TransactionDto;
 
 @Repository
-public class DatabaseApiImpl extends AbstractJUnit4SpringContextTests {
+public class DatabaseApiImpl {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
