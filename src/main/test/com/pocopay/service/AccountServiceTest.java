@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pocopay.services.dto.AccountDto;
-import com.pocopay.services.dto.Transaction;
+import com.pocopay.services.dto.TransactionDto;
 import com.pocopay.test.MyWebControllerTest;
 
 public class AccountServiceTest extends MyWebControllerTest {
@@ -44,8 +44,8 @@ public class AccountServiceTest extends MyWebControllerTest {
 
     @Test
     public void shouldSaveInitialTransaction() {
-        List<Transaction> transactions = transactionService.getTransactionsFor(account);
-        assertTrue(transactions.get(0).getType().equals(Transaction.EXTERNAL_PAYMENT));
+        List<TransactionDto> transactions = transactionService.getTransactionsFor(account);
+        assertTrue(transactions.get(0).getType().equals(TransactionDto.EXTERNAL_PAYMENT));
     }
 
     @Test

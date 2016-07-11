@@ -19,7 +19,7 @@ import org.springframework.test.context.junit4.AbstractJUnit4SpringContextTests;
 
 import com.pocopay.service.AccountService;
 import com.pocopay.services.dto.AccountDto;
-import com.pocopay.services.dto.Transaction;
+import com.pocopay.services.dto.TransactionDto;
 
 @Repository
 public class DatabaseApiImpl extends AbstractJUnit4SpringContextTests {
@@ -36,7 +36,7 @@ public class DatabaseApiImpl extends AbstractJUnit4SpringContextTests {
             + ") VALUES(?,?,?,?)";
 
     
-    public Long save(Transaction transaction) {
+    public Long save(TransactionDto transaction) {
         KeyHolder keyHolder = new GeneratedKeyHolder();
         jdbcTemplate.update(
                 new PreparedStatementCreator() {
@@ -74,16 +74,16 @@ public class DatabaseApiImpl extends AbstractJUnit4SpringContextTests {
     }
 
 
-    public List<Transaction> getTransactionsFor(AccountDto to) {
+    public List<TransactionDto> getTransactionsFor(AccountDto to) {
 
         return this.jdbcTemplate.query("SELECT * FROM transaction WHERE " + TransactionTable.TO_ACCOUNT + " = ? OR "
                 + TransactionTable.FROM_ACCOUNT + " = ?",
                 new Object[] { to.getId(), to.getId() },
-                new RowMapper<Transaction>() {
-                    public Transaction mapRow(ResultSet rs, int rowNum) throws SQLException {
+                new RowMapper<TransactionDto>() {
+                    public TransactionDto mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-                        Transaction transaction;
-                        transaction = new Transaction();
+                        TransactionDto transaction;
+                        transaction = new TransactionDto();
                         transaction.setId(rs.getLong(TransactionTable.ID));
                         transaction.setAmount(rs.getLong(TransactionTable.AMOUNT));
                         transaction.setType(rs.getInt(TransactionTable.TYPE));

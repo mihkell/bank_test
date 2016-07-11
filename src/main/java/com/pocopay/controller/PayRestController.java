@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.pocopay.controller.dto.PayRequest;
 import com.pocopay.controller.dto.Result;
 import com.pocopay.service.TransactionService;
-import com.pocopay.services.dto.Transaction;
+import com.pocopay.services.dto.TransactionDto;
 
 @RestController
 @RequestMapping("pay")
@@ -21,7 +21,7 @@ public class PayRestController extends PocoController {
 
     @RequestMapping(method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody Result post(@RequestBody PayRequest payRequest) {
-        Transaction transaction = transactionService.makeTransaction(payRequest.getTo(), payRequest.getFrom(),
+        TransactionDto transaction = transactionService.makeTransaction(payRequest.getTo(), payRequest.getFrom(),
                 payRequest.getAmount());
         return ok(transaction);
     }

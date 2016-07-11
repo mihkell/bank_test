@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.pocopay.dao.DatabaseApiImpl;
 import com.pocopay.services.dto.AccountDto;
-import com.pocopay.services.dto.Transaction;
+import com.pocopay.services.dto.TransactionDto;
 
 @Service
 public class AccountService {
@@ -31,7 +31,7 @@ public class AccountService {
     }
 
     private void addInitialFunds(AccountDto account) {
-        transactionService.makeTransaction(account, AccountDto.STARTING_FUNDS, Transaction.EXTERNAL_PAYMENT);
+        transactionService.makeTransaction(account, AccountDto.STARTING_FUNDS, TransactionDto.EXTERNAL_PAYMENT);
     }
 
     public AccountDto getAccountById(Long id) {

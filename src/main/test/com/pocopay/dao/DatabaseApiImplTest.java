@@ -1,7 +1,8 @@
 package com.pocopay.dao;
 
 import static com.pocopay.test.MyWebControllerTest.getAccountName;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
@@ -15,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.pocopay.service.AccountService;
 import com.pocopay.services.dto.AccountDto;
-import com.pocopay.services.dto.Transaction;
+import com.pocopay.services.dto.TransactionDto;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring-core-config.xml")
@@ -30,8 +31,6 @@ public class DatabaseApiImplTest {
 
     private String accountName;
 
-    private String accountName2;
-
     private AccountDto returnedAccount;
 
     private AccountDto account;
@@ -39,8 +38,7 @@ public class DatabaseApiImplTest {
     @Before
     public void setup() {
         accountName = getAccountName();
-        accountName2 = getAccountName();
-        
+
         account = createAccount(accountName);
         databaseApiImpl.save(account);
         returnedAccount = databaseApiImpl.getAccount(accountName);
@@ -54,35 +52,35 @@ public class DatabaseApiImplTest {
 
     @Test
     public void shuldSaveAccount() {
-        
+
         assertTrue(account.getId() != null);
         assertTrue(account.equals(returnedAccount));
     }
-    
+
     @Test
-    public void shouldGetAccountById(){
+    public void shouldGetAccountById() {
         returnedAccount = databaseApiImpl.getAccount(account.getId());
         assertTrue(account.equals(returnedAccount));
     }
 
     @Test
     public void shouldHaveZeroTransactionsAfterCreatingAccountInDatabaseApi() {
-        List<Transaction> transactionsFor = databaseApiImpl.getTransactionsFor(account);
+        List<TransactionDto> transactionsFor = databaseApiImpl.getTransactionsFor(account);
         assertTrue(transactionsFor != null);
         assertEquals(transactionsFor.size(), 0);
     }
-    
+
     @Test
     public void shuldSaveTransaction() {
         returnedAccount = accountService.createAccount(getAccountName());
-        Transaction transaction = new Transaction();
+        TransactionDto transaction = new TransactionDto();
         transaction.setTo(returnedAccount);
         transaction.setFrom(account);
         transaction.setAmount(20L);
         Long transactionId = databaseApiImpl.save(transaction);
         assertTrue(transactionId != null);
-        
-        List<Transaction> transactionsFor = databaseApiImpl.getTransactionsFor(returnedAccount);
+
+        List<TransactionDto> transactionsFor = databaseApiImpl.getTransactionsFor(returnedAccount);
         assertEquals(2, transactionsFor.size());
     }
 }

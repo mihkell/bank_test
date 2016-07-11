@@ -14,7 +14,7 @@ import com.pocopay.controller.dto.TransactionsForUserRequest;
 import com.pocopay.service.AccountService;
 import com.pocopay.service.TransactionService;
 import com.pocopay.services.dto.AccountDto;
-import com.pocopay.services.dto.Transaction;
+import com.pocopay.services.dto.TransactionDto;
 
 @RestController
 @RequestMapping("transactions")
@@ -29,7 +29,7 @@ public class TransactionsRestController extends PocoController {
     public @ResponseBody Result post(@RequestBody TransactionsForUserRequest transactionsRequest) {
         AccountDto account = accountService.getAccountBy(transactionsRequest.getAccountName());
 
-        List<Transaction> transactions = transactionService.getTransactionsFor(account);
+        List<TransactionDto> transactions = transactionService.getTransactionsFor(account);
 
         return ok(transactions);
     }

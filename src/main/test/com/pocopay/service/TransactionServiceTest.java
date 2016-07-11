@@ -9,7 +9,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.pocopay.services.dto.AccountDto;
-import com.pocopay.services.dto.Transaction;
+import com.pocopay.services.dto.TransactionDto;
 import com.pocopay.test.MyWebControllerTest;
 
 public class TransactionServiceTest extends MyWebControllerTest {
@@ -30,10 +30,10 @@ public class TransactionServiceTest extends MyWebControllerTest {
         to = accountService.createAccount(getAccountName());
         from = accountService.createAccount(getAccountName());
     }
-    
+
     @Test
     public void shouldHaveSpecifiedFields_To_From_Amount_Id() {
-        Transaction transaction = transactionService.pay(to, from, amount);
+        TransactionDto transaction = transactionService.pay(to, from, amount);
 
         assertTrue(transaction.getTo().equals(to));
         assertTrue(transaction.getFrom().equals(from));
@@ -46,7 +46,7 @@ public class TransactionServiceTest extends MyWebControllerTest {
         transactionService.pay(to, from, amount);
         transactionService.pay(from, from, amount);
 
-        List<Transaction> transactions = transactionService
+        List<TransactionDto> transactions = transactionService
                 .getTransactionsFor(to);
 
         assertTrue(transactions.size() > 0);
@@ -55,8 +55,8 @@ public class TransactionServiceTest extends MyWebControllerTest {
 
     @Test
     public void shouldMakeTransactionWithMakeTransactionMethod() {
-        Transaction transaction = transactionService.makeTransaction(to, AccountDto.STARTING_FUNDS,
-                Transaction.EXTERNAL_PAYMENT);
+        TransactionDto transaction = transactionService.makeTransaction(to, AccountDto.STARTING_FUNDS,
+                TransactionDto.EXTERNAL_PAYMENT);
 
         assertTrue(transaction.getId() != null);
     }
@@ -64,7 +64,7 @@ public class TransactionServiceTest extends MyWebControllerTest {
     @Test
     public void shouldMakeTransactionBetweenAccountsByIds() {
         Long amount = 25L;
-        Transaction transaction = transactionService.makeTransaction(to.getName(), from.getName(), amount);
+        TransactionDto transaction = transactionService.makeTransaction(to.getName(), from.getName(), amount);
         assertTrue(transaction.getId() != null);
         assertTrue(transaction.getAmount().equals(amount));
 

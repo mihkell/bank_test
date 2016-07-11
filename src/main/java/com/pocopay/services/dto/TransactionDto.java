@@ -3,7 +3,7 @@ package com.pocopay.services.dto;
 import lombok.Data;
 
 @Data
-public class Transaction {
+public class TransactionDto {
 
     public static final Integer ACCOUNT_TO_ACCOUNT = 1;
     public static final Integer EXTERNAL_PAYMENT = 2;

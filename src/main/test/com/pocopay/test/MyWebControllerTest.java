@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring-core-config.xml")
 @Transactional
 public abstract class MyWebControllerTest {
-    
+
     public static String getAccountName() {
         return RandomStringUtils.randomAlphabetic(9);
     }
