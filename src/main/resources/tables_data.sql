@@ -22,6 +22,6 @@ CREATE TABLE transaction (
 INSERT INTO kl_transaction_type (type) VALUES ('account_to_account');
 INSERT INTO kl_transaction_type (type) VALUES ('external_payment');
 
-DROP TABLE transaction;
-DROP TABLE account;
-DROP TABLE kl_transaction_type;
+-- DROP TABLE transaction;
+-- DROP TABLE account;
+-- DROP TABLE kl_transaction_type;
