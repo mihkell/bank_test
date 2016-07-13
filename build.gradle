@@ -33,12 +33,12 @@ dependencies {
 // Embeded Jetty for testing
 jettyRun{
 	contextPath = "spring4"
-	httpPort = 8080
+	httpPort = 9191
 }
 
 jettyRunWar{
 	contextPath = "spring4"
-	httpPort = 8080
+	httpPort = 9191
 }
 
 //For Eclipse IDE only

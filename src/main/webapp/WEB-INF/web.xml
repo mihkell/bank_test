@@ -6,23 +6,6 @@
 	<display-name>Pocopay Test</display-name>
 	<description>Spring MVC web application</description>
 
-	<!-- For web context -->
-<!-- 	<servlet>
-		<servlet-name>hello-dispatcher</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>/WEB-INF/spring-mvc-config.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
-
-	<servlet-mapping>
-		<servlet-name>hello-dispatcher</servlet-name>
-		<url-pattern>/</url-pattern>
-	</servlet-mapping> -->
-
-	<!-- For root context -->
 	<listener>
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
@@ -31,7 +14,6 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>
 		/WEB-INF/spring-core-config.xml
-		/WEB-INF/spring-mvc-config.xml
 		</param-value>
 	</context-param>
 
